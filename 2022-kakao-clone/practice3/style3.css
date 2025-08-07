@@ -1,0 +1,54 @@
+body {
+  background: #f5f5f5;
+  height: 100vh;
+}
+
+.father {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h1 {
+  display: block;
+  padding: 10px 20px 10px 20px;
+  text-align: center;
+}
+
+.colorbox {
+  height: 500px;
+  width: 250px;
+  border: 5px solid white;
+}
+
+div > div:nth-child(2) {
+  background-color: teal;
+}
+div > div:nth-child(3) {
+  background-color: burlywood;
+}
+div > div:nth-child(4) {
+  background-color: thistle;
+}
+
+#tomato {
+  background-color: tomato;
+}
+
+.whitlebox {
+  background-color: white;
+  height: 200px;
+  width: 255px;
+  position: relative;
+  top: 40px;
+}
+
+div > P {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+div > span {
+  font-size: x-large;
+  font-weight: bold;
+}

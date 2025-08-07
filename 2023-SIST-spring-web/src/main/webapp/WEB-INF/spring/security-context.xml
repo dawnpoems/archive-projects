@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security-5.2.xsd">
+
+	<bean id="customAccessDenied" class="edu.springz.security.CustomAccessDeniedHandler"/>
+	<bean id="customLoginSuccess" class="edu.springz.security.CustomLoginSuccessHandler"/>
+	<!-- <bean id="customPasswordEncoder" class="edu.springz.security.CustomNoOpPasswordEncoder"></bean> -->
+	<!-- 인증처리만 할 때는 이거 자주 씀 -->
+	<bean id="bCryptPasswordEncoder"
+		  class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	<!-- 스프링에서 제공하는 암호화 패스워드 인코더 -->
+
+
+	<security:http>
+		<security:intercept-url pattern="/sample/all"
+			access="permitAll" />
+		<security:intercept-url
+			pattern="/sample/member" access="hasRole('ROLE_MEMBER')" />
+		<!-- /sample/member는 member role을 가지고 있어야만 들어올 수 있음 -->
+		<security:intercept-url
+			pattern="/sample/admin" access="hasRole('ROLE_ADMIN')" />
+		
+		<!-- 로그인 페이지 지정 및 로그인 성공 시 처리 지정-->
+		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess" />
+		
+		<!-- 로그아웃 처리 지정 -->
+		<security:logout logout-url="/customLogout" invalidate-session="true"/>
+		
+			<!-- 접근 불가 메시지 설정 -->
+		<!-- <security:access-denied-handler error-page="/accessDenied"/> -->
+		<security:access-denied-handler ref="customAccessDenied"/>
+	</security:http>
+
+
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+<!-- 			<security:user-service>
+				<security:user name="member" password="{noop}1111"
+					authorities="ROLE_MEMBER" />
+				<security:user name="admin" password="{noop}1111"
+					authorities="ROLE_MEMBER, ROLE_ADMIN" />
+					admin이라는 아이디는 member와 admin이라는 모든 role을 가짐 
+			</security:user-service>  -->
+			<security:jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT id, pw, enabled FROM tbl_member WHERE id=?"
+				authorities-by-username-query="SELECT id, auth FROM tbl_member_auth WHERE id=?"/>
+			<!-- <security:password-encoder ref="customPasswordEncoder"/> -->
+			<security:password-encoder ref="bCryptPasswordEncoder"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Date App</title>
+  </head>
+  <body>
+    <header>
+      <h1>정 산</h1>
+    </header>
+    <main id="main-screen">
+      <div class="count">
+        <span class="count-name">멩구</span>
+        <div class="count-part">
+          <form class="count-form">
+            <div class="count-form__content">
+              <input
+                class="count-form__content__price"
+                type="number"
+                placeholder="얼마죠?"
+                required
+              />
+              <input
+                class="count-form__content__reason"
+                type="text"
+                placeholder="왜썼죠?"
+              />
+            </div>
+            <button class="count-form__btn">확인</button>
+          </form>
+          <div class="open-and-close">
+            <span class="open-and-close__name">전체항목 닫기</span>
+            <span class="open-and-close__icon">➖</span>
+          </div>
+          <ul class="count-item"></ul>
+        </div>
+      </div>
+      <div class="count2">
+        <span class="count-name">밍구</span>
+        <div class="count-part">
+          <form class="count-form">
+            <div class="count-form__content">
+              <input
+                class="count-form__content__price"
+                type="number"
+                placeholder="얼마죠?"
+                required
+              />
+              <input
+                class="count-form__content__reason"
+                type="text"
+                placeholder="왜썼죠?"
+              />
+            </div>
+            <button class="count-form__btn">확인</button>
+          </form>
+          <div class="open-and-close">
+            <span class="open-and-close__name">전체항목 닫기</span>
+            <span class="open-and-close__icon">➖</span>
+          </div>
+          <ul class="count-item"></ul>
+        </div>
+      </div>
+      <nav>
+        <div class="total">
+          <div class="total__part">
+            <span>멩구 총</span>
+            <div class="total__part__count">0</div>
+          </div>
+          <div class="total__part">
+            <span>밍구 총</span>
+            <div class="total__part__count">0</div>
+          </div>
+        </div>
+        <div class="total__all">
+          <span>총 정산</span>
+          <div class="total__all__count">금액을 입력해주세요</div>
+        </div>
+      </nav>
+      <script src="js/countAll.js"></script>
+      <script src="js/count1.js"></script>
+      <script src="js/count2.js"></script>
+    </main>
+  </body>
+</html>

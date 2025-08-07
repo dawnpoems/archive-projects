@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.springz.mapper.ReplyMapper">
+
+  <update id="updateReply">
+  		UPDATE tbl_reply 
+  		SET reply=#{reply}, update_date=SYSDATE 
+  		WHERE rno=#{rno}
+  </update>
+
+  <delete id="deleteReply">
+  		DELETE FROM tbl_reply WHERE rno = #{rno}
+  </delete>
+
+  <insert id="insertBoardSelectKey">
+	<!-- rno를 사전에 증가시켜서 rno에 저장함 -->  
+  	<selectKey keyProperty="rno" order="BEFORE" resultType="int">
+  		SELECT seq_tbl_reply.NEXTVAL FROM dual
+  	</selectKey>
+  
+  	INSERT INTO tbl_reply (rno, bno, reply, replyer)
+  	VALUES (#{rno}, #{bno}, #{reply}, #{replyer})
+  </insert>
+  
+  <insert id="insertReply">
+  	INSERT INTO tbl_reply (rno, bno, reply, replyer)
+  	VALUES (seq_tbl_reply.NEXTVAL , #{bno}, #{reply}, #{replyer})
+  </insert>
+
+  <select id="selectReplyAllPaging" resultType="edu.springz.domain.ReplyVO">
+ 	<![CDATA[
+    	SELECT 	 *
+    	FROM 	 ( SELECT /*+INDEX(tbl_reply idx_tbl_reply) */
+    					  rownum rn, rno, bno, reply, replyer,
+    			 	      reg_date as regDate, update_date as updateDate 
+    			   FROM   tbl_reply
+    			   WHERE  bno = #{bno}
+    			   AND    rno > 0
+    			   AND    rownum <= #{cri.amount} * #{cri.pageNum} ) 
+    	WHERE 	 rn > #{cri.amount} * (#{cri.pageNum} - 1)
+    ]]>
+
+  </select>
+  
+  <!-- 전체 댓글 수 조회 totalReply -->
+    <select id="totalReply" resultType="int">
+  	SELECT COUNT(rno) FROM tbl_reply WHERE bno=#{bno}
+  </select>
+  
+  
+  <select id="selectReply" resultType="edu.springz.domain.ReplyVO">
+    SELECT rno, bno, reply, replyer, reg_date as regDate, update_date as updateDate 
+    FROM tbl_reply WHERE rno = #{rno}
+  </select>
+</mapper>

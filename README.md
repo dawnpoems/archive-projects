@@ -1,2 +1,28 @@
-# archive-projects
-This is a repository of past projects.
+# 🗂️ Archived Projects
+_자동 생성일: 
+
+- `2022-kakao-clone`
+  → 📌  2022년도에 노마드코더 카카오톡 클론코딩 강의를 토대로 실습했던 레포
+
+- `2022-JS-clone`
+  → 📌  2022년도에 노마드코더 Javascript 강의를 들으며 실습했던 레포
+
+- `2022-JS-Callenge`
+  → 📌 2022년도에 노마드코더 Javascript 챌린지를 참여했던 레포
+
+- `2022-JS-date-web`
+  → 📌 JS 공부 후 간단하게 실습으로 만들어보았던 데이트 정산용 앱
+
+- `2023-SIST-servlet`
+  → 📌  2023년도에 쌍용강북교육센터에서 서블릿 강의를 들으며 제작했던 레포
+
+- `2023-SIST-spring-web`
+  → 📌 2023년도에 쌍용강북교육센터에서 스프링 강의를 들으며 제작했던 레포
+
+- `2023-SIST-notebook`
+  → 📌  2023년도에 쌍용강북교육센터에서 강의를 들으며 관련내용 간단하게 노션으로 정리해 pdf로 뽑았던 자료
+
+- `2024-42Seoul-cpp`
+  → 📌  42Seoul에서 C++ 과제를 정리하며 만들었던 레포
+
+_※ 모든 레포는 `.git` 폴더가 제거되어 Git 이력은 포함되지 않습니다._

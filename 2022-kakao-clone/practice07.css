@@ -1,0 +1,40 @@
+body {
+  background-color: tomato;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#wheats {
+  background-color: wheat;
+  height: 250px;
+  width: 250px;
+  padding: 20px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.tealsquare {
+  background-color: teal;
+  border: 2px solid white;
+}
+
+#teals1 {
+  height: 50px;
+  width: 50px;
+}
+
+#longsquare {
+  height: 50px;
+  width: 200px;
+  background-color: teal;
+  border: 2px dashed white;
+}
+
+#teals2 {
+  height: 50px;
+  width: 50px;
+}
